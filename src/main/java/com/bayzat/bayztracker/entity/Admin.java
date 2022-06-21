@@ -14,10 +14,10 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @JoinColumn
     @OneToOne
+    @JoinColumn(name = "base_user_id")
     public BaseUser baseUser;
 
-    @Column
-    public List<Privileges> privileges;
+//    @Column
+//    public List<Privileges> privileges;
 }

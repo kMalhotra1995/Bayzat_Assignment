@@ -14,7 +14,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column(name = "BASE_USER")
+
+    @OneToOne
+    @JoinColumn(name = "base_user_id")
     public BaseUser baseUser;
 
     @Column(name = "FIRST_NAME")
@@ -23,6 +25,6 @@ public class User {
     @Column(name = "LAST_NAME")
     public String lastname;
 
-    @Column(name = "PRIVILEGES")
-    public List<Privileges> privileges;
+//    @Column(name = "PRIVILEGES")
+//    public List<Privileges> privileges;
 }
