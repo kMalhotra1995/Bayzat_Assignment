@@ -15,8 +15,8 @@ public class MyController {
     @Autowired
     Myservice myservice;
 
-    @PostMapping("/addCurrency/{username}")
-    public ResponseEntity<?> addCurrency(@RequestBody Currency currency, @RequestParam String username){
+    @PostMapping("/addCurrency")
+    public ResponseEntity<?> addCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username){
         BaseUser baseUser = this.myservice.getBaseUser(username);
         Admin admin = this.myservice.getAdmin(baseUser.id);
         if(admin != null){
@@ -27,8 +27,8 @@ public class MyController {
             return new ResponseEntity(HttpStatus.UNAUTHORIZED);
         }
     }
-    @DeleteMapping("/deleteCurrency/{username}/{currencyId}")
-    public ResponseEntity<HttpStatus> deleteCurrency(@RequestBody Currency currency, @RequestParam("username") String username , @RequestParam("currencyId") Long id){
+    @DeleteMapping("/deleteCurrency/{currencyId}")
+    public ResponseEntity<HttpStatus> deleteCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username , @RequestParam("currencyId") Long id){
         BaseUser baseUser = this.myservice.getBaseUser(username);
         Admin admin = this.myservice.getAdmin(baseUser.id);
         if(admin != null){
@@ -37,7 +37,8 @@ public class MyController {
                 return ResponseEntity.ok(HttpStatus.OK);
             }
             else {
-                return ResponseEntity.ok(HttpStatus.NOT_FOUND); //
+                //return ResponseEntity.status(HttpStatus.UNAUTHORIZED);
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
             }
         }
         else {

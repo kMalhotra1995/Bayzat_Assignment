@@ -31,6 +31,7 @@ public class MyServiceImpl implements Myservice{
 
     @Override
     public Admin getAdmin(Long id) {
+//        if(adminRepository.findById(id).isPresent())
         if(adminRepository.findById(id).isPresent()){
             return this.adminRepository.findById(id).get();
         }else {
