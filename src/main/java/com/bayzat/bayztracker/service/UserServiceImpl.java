@@ -7,7 +7,6 @@ import com.bayzat.bayztracker.repository.AdminRepository;
 import com.bayzat.bayztracker.repository.BaseUserRepository;
 import com.bayzat.bayztracker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
@@ -41,12 +40,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Admin getAdmin(Long id) {
-//        if(adminRepository.findById(id).isPresent())
-        if(adminRepository.findById(id).isPresent()){
-            return this.adminRepository.findById(id).get();
+    public Admin getAdmin(BaseUser baseUser) throws Exception {
+        if(adminRepository.findByBaseUser(baseUser).isPresent()){
+            return this.adminRepository.findByBaseUser(baseUser).get();
         }else {
-            throw new UsernameNotFoundException("Not and admin user");
+            throw new Exception("Not and admin user");
         }
     }
 }
