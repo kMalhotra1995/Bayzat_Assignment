@@ -26,19 +26,19 @@ public class AlertController {
     }
 
     @PutMapping(ApiConstants.UPDATE_ALERT)
-    public ResponseEntity updateAlert(@RequestBody Alert alert, @RequestParam(name="alert-id") Long alertId){
+    public ResponseEntity updateAlert(@RequestBody Alert alert, @PathVariable(name="alert-id") Long alertId){
         try{
             alert.setId(alertId);
             Alert newAlert = this.alertService.update(alert);
             return new ResponseEntity(newAlert, HttpStatus.ACCEPTED);
         }catch(Exception e){
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
     @DeleteMapping(ApiConstants.DELETE_ALERT)
-    public ResponseEntity deleteAlert(@RequestParam(name = "alert-id") Long alertId){
+    public ResponseEntity deleteAlert(@PathVariable(name = "alert-id") Long alertId){
         try{
             alertService.delete(alertId);
             return new ResponseEntity(HttpStatus.OK);

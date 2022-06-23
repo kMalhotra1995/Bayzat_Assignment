@@ -3,6 +3,7 @@ package com.bayzat.bayztracker.service;
 import com.bayzat.bayztracker.entity.Admin;
 import com.bayzat.bayztracker.entity.BaseUser;
 import com.bayzat.bayztracker.entity.Currency;
+import com.bayzat.bayztracker.enums.UnsupportedCurrency;
 import com.bayzat.bayztracker.repository.AdminRepository;
 import com.bayzat.bayztracker.repository.BaseUserRepository;
 import com.bayzat.bayztracker.repository.CurrencyRepository;
@@ -57,7 +58,13 @@ public class CurrencyServiceImpl implements CurrencyService{
 
     @Override
     public Boolean validateCurrency(String currency) {
-        return true;
+        UnsupportedCurrency unsupportedCurrency =  UnsupportedCurrency.findByName(currency);
+        if (unsupportedCurrency == null){
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
 }
