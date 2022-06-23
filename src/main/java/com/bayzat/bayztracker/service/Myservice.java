@@ -9,9 +9,11 @@ public interface Myservice {
 
     BaseUser getBaseUser(String username);
 
-    Admin getAdmin(Long id);
+//    Admin getAdmin(Long id) throws Exception;
 
     void deleteCurrency(Long id);
+
+    Admin getAdmin(BaseUser baseUser) throws Exception;
 
     boolean getCurrency(Long id);
 }

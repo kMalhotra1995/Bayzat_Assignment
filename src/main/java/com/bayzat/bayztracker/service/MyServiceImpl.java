@@ -7,8 +7,6 @@ import com.bayzat.bayztracker.repository.AdminRepository;
 import com.bayzat.bayztracker.repository.BaseUserRepository;
 import com.bayzat.bayztracker.repository.CurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,23 +23,26 @@ public class MyServiceImpl implements Myservice{
     }
 
     @Override
+    public void deleteCurrency(Long id) { this.adminRepository.deleteById(id); }
+
+    @Override
     public BaseUser getBaseUser(String username) {
         return this.baseUserRepository.findByUsername(username);
     }
 
     @Override
-    public Admin getAdmin(Long id) {
-//        if(adminRepository.findById(id).isPresent())
-        if(adminRepository.findById(id).isPresent()){
-            return this.adminRepository.findById(id).get();
-        }else {
-            throw new UsernameNotFoundException("Not and admin user");
-        }
-    }
+    public Admin getAdmin(BaseUser baseUser) throws Exception {
 
-    @Override
-    public void deleteCurrency(Long id) {
-        this.adminRepository.deleteById(id);
+//        if(adminRepository.findById(id).isPresent()){
+//            return this.adminRepository.findById(id).get();
+
+        // find by baseuser(base_user_id)
+        if(adminRepository.findByBaseUser(baseUser).isPresent()){
+            Admin admin = (Admin) this.adminRepository.findByBaseUser(baseUser).get();
+            return admin;
+        }else {
+            throw new Exception("Not and admin user");
+        }
     }
 
     @Override

@@ -16,9 +16,9 @@ public class MyController {
     Myservice myservice;
 
     @PostMapping("/addCurrency")
-    public ResponseEntity<?> addCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username){
+    public ResponseEntity<?> addCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username) throws Exception {
         BaseUser baseUser = this.myservice.getBaseUser(username);
-        Admin admin = this.myservice.getAdmin(baseUser.id);
+        Admin admin = this.myservice.getAdmin(baseUser);
         if(admin != null){
             Currency newCurrency = this.myservice.saveCurrency(currency) ;
             return ResponseEntity.ok(newCurrency);
@@ -28,9 +28,9 @@ public class MyController {
         }
     }
     @DeleteMapping("/deleteCurrency/{currencyId}")
-    public ResponseEntity<HttpStatus> deleteCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username , @RequestParam("currencyId") Long id){
+    public ResponseEntity<HttpStatus> deleteCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username , @RequestParam("currencyId") Long id) throws Exception {
         BaseUser baseUser = this.myservice.getBaseUser(username);
-        Admin admin = this.myservice.getAdmin(baseUser.id);
+        Admin admin = this.myservice.getAdmin(baseUser);
         if(admin != null){
             if(this.myservice.getCurrency(id) == true) {
                 this.myservice.deleteCurrency(id);

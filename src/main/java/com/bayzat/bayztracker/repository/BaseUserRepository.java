@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BaseUserRepository extends JpaRepository<BaseUser, Long> {
 
-    BaseUser findByUsername(String username);
+    BaseUser findByUsername(String username) ;
 }
