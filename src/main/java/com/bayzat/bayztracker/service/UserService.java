@@ -11,5 +11,5 @@ public interface UserService {
 
     BaseUser getBaseUser(String username);
 
-    Admin getAdmin(Long id) throws Exception;
+    Admin getAdmin(BaseUser baseUser) throws Exception;
 }

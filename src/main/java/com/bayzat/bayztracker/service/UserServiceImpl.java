@@ -40,10 +40,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Admin getAdmin(Long id) throws Exception {
+    public Admin getAdmin(BaseUser baseUser) throws Exception {
 //        if(adminRepository.findById(id).isPresent())
-        if(adminRepository.findById(id).isPresent()){
-            return this.adminRepository.findById(id).get();
+        System.out.println(adminRepository.findAll());
+        System.out.println(adminRepository.findByBaseUser(baseUser));
+        if(adminRepository.findByBaseUser(baseUser).isPresent()){
+            return this.adminRepository.findByBaseUser(baseUser).get();
         }else {
             throw new Exception("Not and admin user");
         }

@@ -1,10 +1,12 @@
 package com.bayzat.bayztracker.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Data
+@ToString
 @Entity
 @Table(name = "BASE_USER")
 public class BaseUser {
