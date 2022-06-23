@@ -21,7 +21,6 @@ public class UserController {
     public ResponseEntity addAdmin(@RequestBody Admin admin, @RequestHeader(value = "username") String username){
         try{
             BaseUser baseUser = this.userService.getBaseUser(username);
-            System.out.println(baseUser);
             Admin loggedInAdmin = this.userService.getAdmin(baseUser);
             if(loggedInAdmin != null){
                 return new ResponseEntity(userService.addAdmin(admin), HttpStatus.ACCEPTED);

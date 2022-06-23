@@ -41,9 +41,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Admin getAdmin(BaseUser baseUser) throws Exception {
-//        if(adminRepository.findById(id).isPresent())
-        System.out.println(adminRepository.findAll());
-        System.out.println(adminRepository.findByBaseUser(baseUser));
         if(adminRepository.findByBaseUser(baseUser).isPresent()){
             return this.adminRepository.findByBaseUser(baseUser).get();
         }else {
