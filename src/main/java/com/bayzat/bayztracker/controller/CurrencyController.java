@@ -4,6 +4,7 @@ import com.bayzat.bayztracker.common.ApiConstants;
 import com.bayzat.bayztracker.entity.Admin;
 import com.bayzat.bayztracker.entity.BaseUser;
 import com.bayzat.bayztracker.entity.Currency;
+import com.bayzat.bayztracker.exception.UnsupportedCurrencyCreationException;
 import com.bayzat.bayztracker.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,13 @@ public class CurrencyController {
         BaseUser baseUser = this.currencyService.getBaseUser(username);
         Admin admin = this.currencyService.getAdmin(baseUser);
         if(admin != null){
-            Currency newCurrency = this.currencyService.saveCurrency(currency) ;
-            return ResponseEntity.ok(newCurrency);
+            if (currencyService.validateCurrency(currency.getName())){
+                Currency newCurrency = this.currencyService.saveCurrency(currency) ;
+                return ResponseEntity.ok(newCurrency);
+            }else {
+                return new ResponseEntity<>(new UnsupportedCurrencyCreationException(),HttpStatus.FORBIDDEN);
+            }
+
         }
         else {
             return new ResponseEntity(HttpStatus.UNAUTHORIZED);

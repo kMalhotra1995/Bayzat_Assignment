@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Locale;
 
 import static com.bayzat.bayztracker.enums.AlertStatus.TRIGGERED;
 
+@Component
 public class AlertTriggerJob {
     @Autowired
     AlertRepository alertRepository;
@@ -31,10 +34,12 @@ public class AlertTriggerJob {
 
         for(Alert alert : newAlerts){
             for(Currency currency : listOfCurrencies){
-                if(currency.getCurrentPrice() >= alert.getTargetPrice()){
-                    alert.setStatus(AlertStatus.TRIGGERED);
-                    alertRepository.saveAndFlush(alert);
-                    LOG.info("An alert has been triggered");
+                if(currency.getName().toLowerCase(Locale.ROOT).equals(alert.getCurrency().toLowerCase())){
+                    if(currency.getCurrentPrice() >= alert.getTargetPrice()){
+                        alert.setStatus(AlertStatus.TRIGGERED);
+                        alertRepository.saveAndFlush(alert);
+                        LOG.info("An alert has been triggered");
+                    }
                 }
             }
         }
