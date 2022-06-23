@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyServiceImpl implements Myservice{
+public class CurrencyServiceImpl implements CurrencyService{
     @Autowired
     CurrencyRepository currencyRepository;
     @Autowired
@@ -53,6 +53,11 @@ public class MyServiceImpl implements Myservice{
         else {
             return false;
         }
+    }
+
+    @Override
+    public Boolean validateCurrency(String currency) {
+        return true;
     }
 
 }

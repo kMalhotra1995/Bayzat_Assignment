@@ -4,6 +4,7 @@ import com.bayzat.bayztracker.enums.AlertStatus;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 @Data
 @Entity
@@ -12,12 +13,16 @@ public class Alert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
     @Column
     public String currency;
+
     @Column
     public Double targetPrice;
+
     @Column
-    public String createdAt;
+    public Instant createdAt;
+
     @Column
     public AlertStatus status;
 }

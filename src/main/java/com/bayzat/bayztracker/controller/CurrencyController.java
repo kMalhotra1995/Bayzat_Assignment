@@ -3,7 +3,7 @@ package com.bayzat.bayztracker.controller;
 import com.bayzat.bayztracker.entity.Admin;
 import com.bayzat.bayztracker.entity.BaseUser;
 import com.bayzat.bayztracker.entity.Currency;
-import com.bayzat.bayztracker.service.Myservice;
+import com.bayzat.bayztracker.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/bayztracker")
-public class MyController {
+public class CurrencyController {
     @Autowired
-    Myservice myservice;
+    CurrencyService currencyService;
 
     @PostMapping("/addCurrency")
     public ResponseEntity<?> addCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username) throws Exception {
-        BaseUser baseUser = this.myservice.getBaseUser(username);
-        Admin admin = this.myservice.getAdmin(baseUser);
+        BaseUser baseUser = this.currencyService.getBaseUser(username);
+        Admin admin = this.currencyService.getAdmin(baseUser);
         if(admin != null){
-            Currency newCurrency = this.myservice.saveCurrency(currency) ;
+            Currency newCurrency = this.currencyService.saveCurrency(currency) ;
             return ResponseEntity.ok(newCurrency);
         }
         else {
@@ -29,11 +29,11 @@ public class MyController {
     }
     @DeleteMapping("/deleteCurrency/{currencyId}")
     public ResponseEntity<HttpStatus> deleteCurrency(@RequestBody Currency currency, @RequestHeader(value = "username") String username , @RequestParam("currencyId") Long id) throws Exception {
-        BaseUser baseUser = this.myservice.getBaseUser(username);
-        Admin admin = this.myservice.getAdmin(baseUser);
+        BaseUser baseUser = this.currencyService.getBaseUser(username);
+        Admin admin = this.currencyService.getAdmin(baseUser);
         if(admin != null){
-            if(this.myservice.getCurrency(id) == true) {
-                this.myservice.deleteCurrency(id);
+            if(this.currencyService.getCurrency(id) == true) {
+                this.currencyService.deleteCurrency(id);
                 return ResponseEntity.ok(HttpStatus.OK);
             }
             else {

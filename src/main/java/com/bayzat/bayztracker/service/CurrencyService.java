@@ -4,7 +4,7 @@ import com.bayzat.bayztracker.entity.Admin;
 import com.bayzat.bayztracker.entity.BaseUser;
 import com.bayzat.bayztracker.entity.Currency;
 
-public interface Myservice {
+public interface CurrencyService {
     Currency saveCurrency(Currency currency);
 
     BaseUser getBaseUser(String username);
@@ -16,4 +16,6 @@ public interface Myservice {
     Admin getAdmin(BaseUser baseUser) throws Exception;
 
     boolean getCurrency(Long id);
+
+    Boolean validateCurrency(String currency);
 }
