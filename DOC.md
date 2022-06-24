@@ -44,3 +44,4 @@ also related to Adding users.
 * We have added that functionality that Admin can only add other users, so you should add one admin manually.
 * We have defined Base User as base class which will have basic and common attributes for Admin and normal User.
 * Users and Admin is inheriting this BaseUser to differentiate their privileges.
+* Update application.properties file according to your PostgreSQL credentials.
