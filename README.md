@@ -1,22 +1,50 @@
-# Backend Engineer Assignment
-In this assignment, you are expected to build an API backend with Spring Boot framework for an imaginary mobile application. Please read the constraints and tasks carefully and follow submission guideline at the bottom of the page.
+# Bayzat's Assignment in SpringBoot and PostgreSQL
 
-## Scenario
-BayzTracker is a cryptocurrency tracker app which allows its users to create alerts to be notified when a price of a coin reaches the price user determines.
+In this project we have used the below dependencies
 
-User can create multiple alerts and can track the alert status anytime (triggered or waiting).
+1. [ ] swagger-ui-express
+2. [ ] Docker
+3. [ ] JPA
+4. [ ] Lombok
+5. [ ] Mockito
+6. [ ] SpringDoc
 
-There is also currency list page where all coins with their current prices are listed.
 
-The admin user also manages the currencies that will be listed on the app.
+### API End Points
+
+
+### Alert Controller
+
+**Update Alert** : PUT {URL}alert/update/{alert-id}
+
+**Create Alert:** POST {URL}alert/add
+
+**Delete Alert**: DELETE {URL}alert/delete/{alert-id}
+
+**Delete Alert**: DELETE {URL}alert/cancel/{alert-id}
+
+#### currency-controller
+
+**Add Currency:** POST  /bayztracker/add
+
+**Delete Currency**: DELETE /bayztracker/delete/{currency-id}
+
+**Swagger Definition**: http://127.0.0.1:9099/swagger-ui/index.html#/
+
+![img_1.png](./docs/img.png)
+
+
+## Install PostgreSQL
+
+https://www.postgresql.org/download/
 
 ## Tech stack
 - [Spring Boot](https://spring.io/projects/spring-boot)
-- Java 8+ or Kotlin
-- Gradle or Maven
+- Java 8+ 
+- Maven
 - Spring Data JPA
 - Hibernate
-- MySQL or PostgreSQL
+- PostgreSQL
 - GIT for version control
 
 ## General Application Constraints
@@ -49,25 +77,5 @@ The admin user also manages the currencies that will be listed on the app.
     - ScheduledTask should run every 30 seconds. 
     - Note that, we will change the current price information manually on database while testing.
 
-## Bonus Tasks
-1. Test coverage of 60%. Please do not try to increase more.
-2. Add Docker support for your application. It should be buildable with Docker and can be run with `docker run`
-3. If you are using Docker, implement a `docker-compose` stack that contains the database and your application.
-4. Add your design decisions to `DOC.md` file.
-5. Create a Postman collection in order to test the endpoints. Export and add it to this repository.
 
-## Evaluation Criterias
-- Code quality
-- Applying Best Practices and OOP principles
-- Correctness of the business logic and their compliance with the requirements
-- Unit Tests
-- Git commit structure
 
-# Submission
-Please open a Pull/Merge request to this repository with everything you have prepared.
-
-- Make sure that project is building correctly.
-- Make sure that all tests are passing.
-- Prepare necessary instructions to run your application in `DOC.md` file.
-- If you have questions, please send us an email, we'll get back to you as soon as possible.
-- You have 7 days to complete this task. 
