@@ -34,10 +34,6 @@ public class CurrencyServiceImpl implements CurrencyService{
     @Override
     public Admin getAdmin(BaseUser baseUser) throws Exception {
 
-//        if(adminRepository.findById(id).isPresent()){
-//            return this.adminRepository.findById(id).get();
-
-        // find by baseuser(base_user_id)
         if(adminRepository.findByBaseUser(baseUser).isPresent()){
             Admin admin = (Admin) this.adminRepository.findByBaseUser(baseUser).get();
             return admin;

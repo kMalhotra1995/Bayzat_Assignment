@@ -9,7 +9,6 @@ public interface CurrencyService {
 
     BaseUser getBaseUser(String username);
 
-//    Admin getAdmin(Long id) throws Exception;
 
     void deleteCurrency(Long id);
 

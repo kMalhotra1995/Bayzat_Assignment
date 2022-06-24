@@ -2,6 +2,7 @@ package com.bayzat.bayztracker.entity;
 
 import lombok.Data;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 
 @Data
@@ -12,13 +13,16 @@ public class Currency {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column
+    @Column(nullable = false)
+    @NotEmpty
     public String name;
 
-    @Column
+    @Column(nullable = false)
+    @NotEmpty
     public String symbol;
 
-    @Column
+    @Column(nullable = false)
+    @NotEmpty
     public Double currentPrice;
 
     @Column

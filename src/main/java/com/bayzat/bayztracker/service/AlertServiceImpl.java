@@ -36,7 +36,7 @@ public class AlertServiceImpl implements AlertService {
     @Override
     public Alert update(Alert a) throws Exception {
         Optional<Alert> ua = alertRepository.findById(a.getId());
-        if(ua.isPresent() ){ //&& ua.get().getStatus().equals(AlertStatus.NEW)
+        if(ua.isPresent() ){
             Alert alert = ua.get();
             alert.setCreatedAt(Instant.now());
             if(currencyService.validateCurrency(a.getCurrency()))

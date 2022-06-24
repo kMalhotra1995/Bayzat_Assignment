@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Data
 @ToString
@@ -14,15 +17,20 @@ public class BaseUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column
+    @Column(nullable = false)
+    @NotEmpty
+    @Size(min = 5, message = "username should have atleast 2 characters")
     public String username;
 
     @Column
     public Boolean isActive;
 
-    @Column
+    @Column(nullable = false)
+    @NotEmpty
     public String password;
 
-    @Column
+    @Column(nullable = false)
+    @NotEmpty
+    @Email
     public String email;
 }
