@@ -1,5 +1,6 @@
 package com.bayzat.bayztracker.service;
 
+import com.bayzat.bayztracker.common.Constants;
 import com.bayzat.bayztracker.entity.Admin;
 import com.bayzat.bayztracker.entity.BaseUser;
 import com.bayzat.bayztracker.entity.User;
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService{
         if(adminRepository.findByBaseUser(baseUser).isPresent()){
             return this.adminRepository.findByBaseUser(baseUser).get();
         }else {
-            throw new Exception("Not and admin user");
+            throw new Exception(Constants.NOT_AN_ADMIN_USER);
         }
     }
 }

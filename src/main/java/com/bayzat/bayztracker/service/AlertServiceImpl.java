@@ -1,5 +1,6 @@
 package com.bayzat.bayztracker.service;
 
+import com.bayzat.bayztracker.common.Constants;
 import com.bayzat.bayztracker.entity.Alert;
 import com.bayzat.bayztracker.enums.AlertStatus;
 import com.bayzat.bayztracker.exception.UnsupportedCurrencyCreationException;
@@ -47,7 +48,7 @@ public class AlertServiceImpl implements AlertService {
             alert.setTargetPrice(a.getTargetPrice());
             return alertRepository.saveAndFlush(alert);
         }else{
-            throw new Exception("Invalid Alert data");
+            throw new Exception(Constants.INVALID_ALERT_EXCEPTION);
         }
     }
 
@@ -59,7 +60,7 @@ public class AlertServiceImpl implements AlertService {
             alertRepository.flush();
             return true;
         }else{
-            throw new Exception("Alert not found");
+            throw new Exception(Constants.ALERT_NOT_FOUND_EXCEPTION);
         }
     }
 
@@ -71,7 +72,7 @@ public class AlertServiceImpl implements AlertService {
             alert.setStatus(AlertStatus.CANCELLED);
             return alertRepository.saveAndFlush(alert);
         }else{
-            throw new Exception("Could not cancel the alert (maybe its already triggered)");
+            throw new Exception(Constants.CANCEL_NOT_DONE_EXCEPTION);
         }
     }
 

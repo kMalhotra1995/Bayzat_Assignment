@@ -1,5 +1,6 @@
 package com.bayzat.bayztracker.service;
 
+import com.bayzat.bayztracker.common.Constants;
 import com.bayzat.bayztracker.entity.Admin;
 import com.bayzat.bayztracker.entity.BaseUser;
 import com.bayzat.bayztracker.entity.Currency;
@@ -38,7 +39,7 @@ public class CurrencyServiceImpl implements CurrencyService{
             Admin admin = (Admin) this.adminRepository.findByBaseUser(baseUser).get();
             return admin;
         }else {
-            throw new Exception("Not and admin user");
+            throw new Exception(Constants.NOT_AN_ADMIN_USER);
         }
     }
 

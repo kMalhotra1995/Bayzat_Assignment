@@ -13,7 +13,7 @@ import java.time.Instant;
 @Entity
 @ToString
 @EqualsAndHashCode
-@Table(name = "Alert")
+@Table(name = "ALERT")
 public class Alert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

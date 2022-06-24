@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/bayztracker")
+@RequestMapping(ApiConstants.BASE_CURRENCY_URL)
 public class CurrencyController {
     @Autowired
     CurrencyService currencyService;

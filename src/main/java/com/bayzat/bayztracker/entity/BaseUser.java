@@ -1,5 +1,6 @@
 package com.bayzat.bayztracker.entity;
 
+import com.bayzat.bayztracker.common.Constants;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -21,7 +22,7 @@ public class BaseUser {
 
     @Column(nullable = false)
     @NotEmpty
-    @Size(min = 5, message = "username should have atleast 2 characters")
+    @Size(min = 5, message = Constants.DB_BASE_USER_USERNAME_MSG)
     public String username;
 
     @Column

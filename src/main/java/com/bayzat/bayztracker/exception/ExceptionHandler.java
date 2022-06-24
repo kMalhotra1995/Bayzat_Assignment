@@ -1,5 +1,6 @@
 package com.bayzat.bayztracker.exception;
 
+import com.bayzat.bayztracker.common.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,9 @@ public class ExceptionHandler {
     private static final Logger LOG= LoggerFactory.getLogger(ExceptionHandler.class);
 
     public ResponseEntity<AbstractMap.SimpleEntry<String,String>> handle(Exception exception){
-        LOG.error("Currency Not Supported",exception);
+        LOG.error(Constants.CURRENCY_UNSUPPORTED_EXCEPTION,exception);
 
-        AbstractMap.SimpleEntry<String,String> response=new AbstractMap.SimpleEntry<>("message","Currency Not Supported");
+        AbstractMap.SimpleEntry<String,String> response=new AbstractMap.SimpleEntry<>("message", Constants.CURRENCY_UNSUPPORTED_EXCEPTION);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
     }
 }

@@ -1,5 +1,6 @@
 package com.bayzat.bayztracker.jobs;
 
+import com.bayzat.bayztracker.common.Constants;
 import com.bayzat.bayztracker.entity.Alert;
 import com.bayzat.bayztracker.entity.Currency;
 import com.bayzat.bayztracker.enums.AlertStatus;
@@ -38,7 +39,7 @@ public class AlertTriggerJob {
                     if(currency.getCurrentPrice() >= alert.getTargetPrice()){
                         alert.setStatus(AlertStatus.TRIGGERED);
                         alertRepository.saveAndFlush(alert);
-                        LOG.info("An alert has been triggered");
+                        LOG.info(Constants.ALERT_TRIGGERED);
                     }
                 }
             }
