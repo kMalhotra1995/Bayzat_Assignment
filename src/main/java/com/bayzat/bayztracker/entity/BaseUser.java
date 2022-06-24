@@ -1,6 +1,7 @@
 package com.bayzat.bayztracker.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "BASE_USER")
 public class BaseUser {

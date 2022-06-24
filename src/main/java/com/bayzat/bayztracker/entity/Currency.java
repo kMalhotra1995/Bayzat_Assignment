@@ -1,11 +1,16 @@
 package com.bayzat.bayztracker.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 
 @Data
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "CURRENCY")
 public class Currency {

@@ -2,6 +2,8 @@ package com.bayzat.bayztracker.entity;
 
 import com.bayzat.bayztracker.enums.Privileges;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Data
 @Entity
+@ToString
+@EqualsAndHashCode
 @Table(name = "USERS")
 public class User {
     @Id
