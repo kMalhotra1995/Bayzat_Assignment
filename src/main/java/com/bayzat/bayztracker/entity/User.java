@@ -4,6 +4,7 @@ import com.bayzat.bayztracker.enums.Privileges;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Data
@@ -16,15 +17,15 @@ public class User {
 
 
     @OneToOne
-    @JoinColumn(name = "base_user_id")
+    @JoinColumn(name = "BASE_USER_ID")
     public BaseUser baseUser;
 
-    @Column(name = "FIRST_NAME")
+    @Column(name = "FIRST_NAME", nullable = false)
+    @NotEmpty
     public String firstname;
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "LAST_NAME", nullable = false)
+    @NotEmpty
     public String lastname;
 
-//    @Column(name = "PRIVILEGES")
-//    public List<Privileges> privileges;
 }

@@ -17,9 +17,7 @@ public class Admin {
     public Long id;
 
     @OneToOne
-    @JoinColumn(name = "base_user_id")
+    @JoinColumn(name = "BASE_USER_ID")
     public BaseUser baseUser;
 
-//    @Column
-//    public List<Privileges> privileges;
 }
