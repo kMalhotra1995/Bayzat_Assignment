@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  app:
+    build: .
+    ports:
+      - "9099:9099"
+    container_name: backend
+    environment:
+      - POSTGRES_HOST=postgres
+    depends_on:
+      - db_pg
+  db_pg:
+      image: postgres
+      volumes:
+        - ./data/db:/var/lib/postgresql/data
+      ports:
+        - "5433:5432"
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres1234
+        - POSTGRES_DB=postgres
