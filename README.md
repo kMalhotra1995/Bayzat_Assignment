@@ -1,4 +1,4 @@
-# Bayzat's Assignment in SpringBoot and PostgreSQL
+# Assignment in SpringBoot and PostgreSQL
 
 In this project we have used the below dependencies
 
@@ -25,9 +25,9 @@ In this project we have used the below dependencies
 
 #### currency-controller
 
-**Add Currency:** POST  /bayztracker/add
+**Add Currency:** POST  /Currencytracker/add
 
-**Delete Currency**: DELETE /bayztracker/delete/{currency-id}
+**Delete Currency**: DELETE /Currencytracker/delete/{currency-id}
 
 **Swagger Definition**: http://127.0.0.1:9099/swagger-ui/index.html#/
 
@@ -48,7 +48,7 @@ https://www.postgresql.org/download/
 - GIT for version control
 
 ## General Application Constraints
-- Users are using BayzTracker mobile app, assume that the API is only consumed by mobile
+- Users are using CurrencyTracker mobile app, assume that the API is only consumed by mobile
 - Data should only be accepted from the registered users with their ownership rights.
 - There are two types of users: Admin and User.
     - Both user types can create alerts.
